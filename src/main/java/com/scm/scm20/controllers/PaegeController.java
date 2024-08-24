@@ -16,7 +16,7 @@ public class PaegeController {
         // sending data to view
         model.addAttribute("name","Substring Technologies");
         model.addAttribute("YoutubeChannel","Learn Code with Shweta");
-        model.addAttribute("GithubRepository","https://github.com/learncodewithdurgesh/");
+        model.addAttribute("GithubRepository","https://github.com/Shweta9975/");
           return "home";
     }
 }
