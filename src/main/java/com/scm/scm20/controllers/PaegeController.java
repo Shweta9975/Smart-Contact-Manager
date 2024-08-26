@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+
 @Controller
 public class PaegeController {
 
@@ -19,4 +21,26 @@ public class PaegeController {
         model.addAttribute("GithubRepository","https://github.com/Shweta9975/");
           return "home";
     }
+
+
+    //about route
+   
+   @RequestMapping("/about") 
+    public String aboutPage(){
+
+        System.out.println("about page loading...");
+        return "about";
+    }
+      
+    //services
+ 
+    @RequestMapping("/services") 
+    public String servicesPage(){
+
+        System.out.println("services page loading...");
+        return "services";
+    }
+      
+
+
 }
