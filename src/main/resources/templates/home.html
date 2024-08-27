@@ -1,31 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" data-th-href="@{/css/output.css}" />
+  <title>Home Page</title>
 </head>
 <body>
-           <div class="bg-gray-200 w-1/2 p-4 mx-auto mt-4 flex flex-col space-y items-center">
-            <h1 class="text-2xl font-bold" data-th-text="${name}">Welcome to home Page</h1>
-            <p class="text-xl text text-gray-700">Youtube Channel:<span data-th-text="${YoutubeChannel}"></span></p>
-           <p>Github Repository :<span data-th-text="${GithubRepository}"></span></p>
+   <div id="content">
+    <h1>Welcome to home page</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quaerat.</p>
+   </div>
 
-           <a th:href="${GithubRepository}">Click here to open</a>
-
-            <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis vero fugit laboriosam repellendus. 
-                Provident laboriosam, dicta repellendus facilis dolorum quidem! Cumque iste dolor voluptatem at, ab 
-                ut ad neque provident? Quaerat sed aliquid corrupti voluptas, 
-                nulla delectus eligendi debitis aliquam odio! Autem delectus eum odio suscipit vero praesentium aliquid exercitationem?</p>
-
-                <div>
-                    <button class="px-3 py-3 rounded bg-blue-700 text-white hover:bg-blue-700 ">Click Here</button>
-
-                </div>
-           </div>
-
-           <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+   <script>
+    console.log("about page");
+   </script>
 </body>
 </html>
