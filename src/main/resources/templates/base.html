@@ -8,15 +8,17 @@ lang="en" th:fragment="parent(content,title,script)"   xmlns:th="http://www.thym
     <link rel="stylesheet" data-th-href="@{/css/output.css}" />
     <!--cdn link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
 
     <title data-th-replace="${title}">Base Page</title>
 </head>
-<body class="dark:bg-gray-900 dark:text-white">
+
+<body class="dark:bg-gray-900 bg-gray-100 dark:text-white">
     <!--common header-->
 
-    <div data-th-replace="navbar::navbar"></div>
+    <div data-th-replace="~{navbar :: navbar}"></div>
 <!--main content-->
 <div class="p-4 ">
     <section data-th-replace="${content}"></section>
@@ -26,9 +28,9 @@ lang="en" th:fragment="parent(content,title,script)"   xmlns:th="http://www.thym
 
 
     <!--common footer-->
-<footer class="p-4">
+<!-- <footer class="p-4">
     Footer : Learn code with Shweta
-</footer>
+</footer> -->
 
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
