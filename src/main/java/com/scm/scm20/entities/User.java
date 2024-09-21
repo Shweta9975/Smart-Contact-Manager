@@ -33,6 +33,7 @@ public class User {
      private String about;
      @Column(length=1000)
      private String profilePic;
+     private String phoneNumber;
      //information
      private boolean enable=false;
      private boolean emailVerified=false;
@@ -44,6 +45,11 @@ public class User {
 
      @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval = true)
      private List<Contact> contacts=new ArrayList<>();
+
+    public static Object builder() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'builder'");
+    }
 
     
 }

@@ -1,18 +1,24 @@
 package com.scm.scm20.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import com.scm.scm20.services.UserService;
+import com.scm.scm20.entities.User;
+import com.scm.scm20.forms.UserForm;
 
 
 @Controller
 public class PaegeController {
 
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/home")
     public String home(Model model)
@@ -63,6 +69,27 @@ public class PaegeController {
     @GetMapping("/register")
     public String register() {
         return "register";
+    }
+
+    //processing register
+    @RequestMapping(value="/do-register",method= RequestMethod.POST)
+    public String processRegister(@ModelAttribute UserForm userForm){
+
+        System.out.println("Processing registration");
+        System.out.println(userForm);
+        
+//UserForm --> user
+
+        User user=User.builder()
+        .name(userForm.getName())
+        .email(userForm.getName())
+        .password(userForm.getPassword())
+        .about(userForm.getAbout())
+        .phoneNumber(userForm.getPhoneNumber())
+        .profilePic("https://www.pngwing.com/en/free-png-cmgyy");
+        .build();
+        User saverUser=userService.saveUser(user);
+        return "redirect:/register";
     }
 
 }
