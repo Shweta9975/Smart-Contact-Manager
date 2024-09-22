@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService{
        user.setUserId(userId);
        //password encode
        //user.setPassword(userId);
-       
+        user.setEnabled(true);
         return userRepo.save(user);
     }
 
@@ -49,25 +49,21 @@ public class UserServiceImpl implements UserService{
     user2.setAbout(user.getAbout());
     user2.setPhoneNumber(user.getPhoneNumber());
     user2.setProfilePic(user.getProfilePic());
-    user2.setEnable(user.isEnable());
+    user2.setEnabled(user.isEnabled());
     user2.setEmailVerified(user.isEmailVerified());
     user2.setPhoneVerified(user.isPhoneVerified());
     user2.setProvider(user.getProvider());
     user2.setProviderUserId(user.getProviderUserId());
 
     //save the user in database
-
     User save=userRepo.save(user2);
     return Optional.ofNullable(save);
-
 }
 
     @Override
     public void deleteUser(String id) {
         User user2=userRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("User not found"));
-
-        userRepo.delete(user2);
-    
+        userRepo.delete(user2);  
     }
 
     @Override
@@ -88,4 +84,9 @@ public class UserServiceImpl implements UserService{
         return  userRepo.findAll();
     }
 
+    // @Override
+    // public User getUserByEmail(String email) {
+    //     return userRepo.findByEmail(email).orElse(null);
+
+    // }
 }

@@ -26,12 +26,14 @@ public class UserForm {
     @Email(message = "Invalid Email Address")
     @NotBlank(message = "Email is required")
     private String email;
+
     @NotBlank(message = "Password is required")
     @Size(min = 6, message = "Min 6 Characters is required")
     private String password;
 
     @NotBlank(message = "About is required")
     private String about;
+    
     @Size(min = 8, max = 12, message = "Invalid Phone Number")
     private String phoneNumber;
 
