@@ -10,8 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.scm.scm20.services.UserService;
+
+import jakarta.servlet.http.HttpSession;
+
 import com.scm.scm20.entities.User;
 import com.scm.scm20.forms.UserForm;
+import com.scm.scm20.helpers.Message;
+import com.scm.scm20.helpers.MessageType;
 
 
 @Controller
@@ -76,7 +81,7 @@ public class PaegeController {
 
     //processing register
     @RequestMapping(value="/do-register",method= RequestMethod.POST)
-    public String processRegister(@ModelAttribute UserForm userForm){
+    public String processRegister(@ModelAttribute UserForm userForm,HttpSession session){
 
         System.out.println("Processing registration");
         System.out.println(userForm);
@@ -106,9 +111,13 @@ public class PaegeController {
        // user.setEnabled(userForm.isEnabled());
         user.setPhoneNumber(userForm.getPhoneNumber());
         user.setProfilePic("https://www.learncodewithdurgesh.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdurgesh_sir.35c6cb78.webp&w=1920&q=75\")\r\n");
-        user.setEnabled(true);
+       // user.setEnabled(true);
          User savedUser=userService.saveUser(user);
         System.out.println("user saved");
+     
+        Message message=Message.builder().content("Registration Successfull").type(MessageType.green).build();
+        session.setAttribute("message",message);
+
         return "redirect:/register";
     }
 
